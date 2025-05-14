@@ -17,4 +17,14 @@ It configures servlets, filters, listeners, error handling, and more. -->
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FormServlet</servlet-name>
+        <servlet-class>servlets.FormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FormServlet</servlet-name>
+        <url-pattern>/form</url-pattern>
+    </servlet-mapping>
+
 </web-app>
