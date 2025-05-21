@@ -31,15 +31,14 @@ It configures servlets, filters, listeners, error handling, and more. -->
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlets.LoginServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>CalculatorServlet</servlet-name>
-        <servlet-class>servlets.CalculatorServlet</servlet-class>
-    </servlet>
-
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CalculatorServlet</servlet-name>
+        <servlet-class>servlets.CalculatorServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CalculatorServlet</servlet-name>
         <url-pattern>/calculator</url-pattern>
