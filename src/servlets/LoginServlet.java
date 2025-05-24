@@ -1,45 +1,51 @@
 package servlets;
 
-import java.io.IOException; // For handling IO exceptions
-import javax.servlet.*;    // For Servlet interfaces
-import javax.servlet.http.*; // For HttpServlet and HTTP-specific classes
+import java.io.IOException;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 /**
  * LoginServlet
- * -------------
- * Description: Handles POST requests from the login JSP page. Authenticates user credentials.
- *
- * Methods:
- *   - doPost: Validates username and password, redirects to calculator or back to login with error.
- *
- * Input Arguments:
- *   - HttpServletRequest req: The HTTP request object
- *   - HttpServletResponse resp: The HTTP response object
- *
- * Return Types:
- *   - void
+ * -----------------
+ * Description: Displays a login form and validates hardcoded username/password.
+ *              On success, redirects to the Calculator page.
  */
 public class LoginServlet extends HttpServlet {
-    /**
-     * doPost
-     * Description: Handles POST requests by validating credentials.
-     * @param req HttpServletRequest - the HTTP request
-     * @param resp HttpServletResponse - the HTTP response
-     * @throws ServletException
-     * @throws IOException
-     * Variables:
-     *   - username: String, stores the username from the form
-     *   - password: String, stores the password from the form
-     */
+
+    private static final String USERNAME = "mitnick";
+    private static final String PASSWORD = "password";
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        displayLoginForm(resp, null);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username"); // User's username
-        String password = req.getParameter("password"); // User's password
-        // Simple authentication: username=admin, password=admin
-        if ("admin".equals(username) && "admin".equals(password)) {
-            resp.sendRedirect("calculator.jsp"); // Redirect to calculator on success
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+
+        if (USERNAME.equals(username) && PASSWORD.equals(password)) {
+            // Login successful - redirect to calculator servlet
+            resp.sendRedirect("calculator");
         } else {
-            resp.sendRedirect("login.jsp?error=1"); // Redirect back to login with error
+            // Login failed
+            displayLoginForm(resp, "Invalid username or password.");
         }
+    }
+
+    private void displayLoginForm(HttpServletResponse resp, String errorMessage) throws IOException {
+        resp.setContentType("text/html");
+        resp.getWriter().println("<html><body>");
+        resp.getWriter().println("<h2>Login</h2>");
+        if (errorMessage != null) {
+            resp.getWriter().println("<p style='color:red;'>" + errorMessage + "</p>");
+        }
+        resp.getWriter().println("<form method='post'>");
+        resp.getWriter().println("Username: <input type='text' name='username'><br>");
+        resp.getWriter().println("Password: <input type='password' name='password'><br>");
+        resp.getWriter().println("<input type='submit' value='Login'>");
+        resp.getWriter().println("</form>");
+        resp.getWriter().println("</body></html>");
     }
 }
