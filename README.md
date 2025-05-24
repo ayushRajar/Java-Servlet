@@ -21,9 +21,9 @@ tomcat-embed-core-9.0.50.jar
 tomcat-embed-jasper-9.0.50.jar
 
 ## Api
-localhost:9090/api/helloworld -> hello word app\n
-localhost:9090/api/form -> simple form\n
-localhost:9090/api/login -> Calculator app\n
+localhost:9090/api/helloworld -> hello word app <br>
+localhost:9090/api/form -> simple form <br>
+localhost:9090/api/login -> Calculator app <br>
 
 userId : "Mitnick"
 password: "password"
