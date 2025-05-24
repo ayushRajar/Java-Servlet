@@ -14,7 +14,16 @@ This project demonstrates a simple web application using Java Servlets and JSP f
 - `bin/` - Compiled Java classes
 
 ## How to Run
-See `setup.md` for detailed setup and deployment instructions.
+create a '/lib' folder and download following dependency for the servlet
+javax.annotation-api-1.3.2.jar
+javax.servlet-api-4.0.1.jar
+tomcat-embed-core-9.0.50.jar
+tomcat-embed-jasper-9.0.50.jar
 
-## Author
-Generated and documented by GitHub Copilot.
+## Api
+localhost:9090/api/helloworld -> hello word app
+localhost:9090/api/form -> simple form
+localhost:9090/api/login -> Calculator app
+
+userId : "Mitnick"
+password: "password"
